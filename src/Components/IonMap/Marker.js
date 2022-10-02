@@ -5,7 +5,7 @@ export default function Marker(props) {
     const { lat, lng } = props
 
     return (
-        <div lat={lat} lng={lng} style={{ position: "absolute", transform: "translate(-50%, -50%)" }}>
+        <div lat={lat} lng={lng} className="absolute">
             <svg>
                 <circle cx={50} cy={50} r={10} fill="red" />
             </svg>

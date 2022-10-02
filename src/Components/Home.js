@@ -20,7 +20,7 @@ function Home() {
                 </Grid>
                 <Grid item container xs={9}>
                     <OptionsPanel />
-                    <IonMap/>
+                    <IonMap />
                 </Grid>
 
             </Grid>
