@@ -46,12 +46,22 @@ export default function SimpleMap() {
     // Important! Always set the container height explicitly
     <div className="h-screen w-full">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: GOOGLE_API_KEY }}
+        bootstrapURLKeys={{ key: GOOGLE_API_KEY, libraries: ['visualization'] }}
         defaultCenter={defaultCenter}
         defaultZoom={1}
         onBoundsChange={handleChange}
+        heatmap={{
+          positions: filteredData.map(item => ({
+            lat: item[3],
+            lng: item[4],
+          })),
+          options: {
+            radius: 100,
+            opacity: 100,
+          }
+        }}
       >
-        {filteredData.map(getMarkerFromData)}
+        {/* {filteredData.map(getMarkerFromData)} */}
       </GoogleMapReact>
     </div>
   );
