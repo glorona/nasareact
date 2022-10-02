@@ -1,23 +1,26 @@
 import { Label } from "@mui/icons-material"
 import { Box, Slider, Typography } from "@mui/material"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import './Slider.css'
+import Context from "../../Context"
 
 function SliderField(props) {
 
+    const [state, setState] = useContext(Context)
+
     const {
-        defaultValue = 30,
         min = 10,
         max = 50,
         step = 1,
-        label = "Slider placeholder"
+        label = "Slider placeholder",
+        nameKey
     } = props
 
-    const [value, setValue] = useState(defaultValue)
 
     function handleChange(event, value) {
         event.preventDefault()
-        setValue(value)
+
+        setState({ ...state, [nameKey]: value })
     }
 
 
@@ -30,10 +33,9 @@ function SliderField(props) {
                 </Typography>
             </Box>
             <Slider
-                value={value}
+                value={state.nameKey}
                 onChange={handleChange}
                 aria-label={label}
-                defaultValue={defaultValue}
                 valueLabelDisplay="auto"
                 marks
                 step={step}
@@ -42,7 +44,7 @@ function SliderField(props) {
             />
             <Box className="flex justify-center bg-slate-500/25 mx-10 rounded">
                 <Typography variant="h6" className="justify-self-center font-bold text-xs">
-                    {value}
+                    {state[nameKey]}
                 </Typography>
             </Box>
 

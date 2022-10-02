@@ -1,14 +1,14 @@
+import { useEffect, useState } from "react"
 import getLatLngs from "../../DataServices/getLatLngs"
 
+import React from 'react'
+import { Box } from "@mui/material"
 
-function OptionsPanel(props) {
+export default function OptionsPanel() {
 
-    const data = getLatLngs()
     return (
-        <div className="bg-green-500 h-fit w-full" >
-            {JSON.stringify(data)}
-        </div>
+        <Box className="h-fit w-full">
+
+        </Box>
     )
 }
-
-export default OptionsPanel
