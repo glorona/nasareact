@@ -1,7 +1,6 @@
 import { Grid } from '@mui/material'
 import SidePanel from "./SidePanel/SidePanel"
 import HeaderComponent from "./Header/HeaderComponent"
-import OptionsPanel from "./OptionsPanel/OptionsPanel"
 import IonMap from './IonMap/IonMap'
 
 
@@ -19,7 +18,6 @@ function Home() {
 
                 </Grid>
                 <Grid item container xs={9}>
-                    <OptionsPanel />
                     <IonMap />
                 </Grid>
 

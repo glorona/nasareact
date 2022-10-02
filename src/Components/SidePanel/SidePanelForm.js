@@ -1,8 +1,5 @@
-import { Box, Typography } from "@mui/material"
-import { useContext } from "react"
+import { Box } from "@mui/material"
 import SliderField from "../../FormFields/Slider/Slider"
-import Submit from "../../FormFields/Submit/Submit"
-import Context from "../../Context"
 
 
 
