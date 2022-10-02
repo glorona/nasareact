@@ -6,7 +6,8 @@ function App() {
 
   const state = useState({
     hour: 0,
-    day: 166
+    day: 166,
+    file: 1
   })
 
   return (

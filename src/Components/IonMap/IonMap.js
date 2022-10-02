@@ -10,18 +10,14 @@ export default function SimpleMap() {
   const [state, setState] = useContext(Context)
 
   const data = useData()
-  const [filteredData, setFilteredData] = useState(data)
+
+  console.log(data.filter(item => item.FILE == 10).map(item => ({
+    lat: Number(item.LAT).toFixed(4),
+    lng: Number(item.LON).toFixed(4),
+    weight: Number(Number(item.ELEC_DEN).toFixed(2)),
+  })))
 
   const [zoom, setZoom] = useState(1)
-
-  useEffect(() => {
-    const filteredArray = data.filter(item => (item[1] == state.day && item[2] == state.hour))
-    setFilteredData(filteredArray)
-  }, [state])
-
-
-
-
 
 
   function getMarkerFromData(item, index) {
@@ -45,24 +41,27 @@ export default function SimpleMap() {
   return (
     // Important! Always set the container height explicitly
     <div className="h-screen w-full">
+
       <GoogleMapReact
-        bootstrapURLKeys={{ key: GOOGLE_API_KEY, libraries: ['visualization'] }}
+        bootstrapURLKeys={{ key: GOOGLE_API_KEY, libraries: ['visualization', 'drawing'] }}
         defaultCenter={defaultCenter}
         defaultZoom={1}
         onBoundsChange={handleChange}
         heatmap={{
-          positions: filteredData.map(item => ({
-            lat: item[3],
-            lng: item[4],
+          positions: data.filter(item => item.FILE == state.file).map(item => ({
+            lat: Number(item.LAT).toFixed(4),
+            lng: Number(item.LON).toFixed(4),
+            weight: Math.max(Number(item.ELEC_DEN), 0),
           })),
           options: {
-            radius: 100,
+            radius: 50,
             opacity: 100,
           }
         }}
       >
         {/* {filteredData.map(getMarkerFromData)} */}
       </GoogleMapReact>
+
     </div>
   );
 }
